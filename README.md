@@ -93,20 +93,13 @@ export PATH=$PATH:$JAVA_HOME/bin
 - ambari-server start
 
 ### 連線至Server
-- 192.168.81.128:8080
+- 0.0.0.0:8080
 
 ### private key
 - cat ~/.ssh/id_rsa
 
-
-### 設定Repo
-- cd /tmp
-- wget -nv http://public-repo-1.hortonworks.com/ambari/centos6/2.x/updates/2.2.0.0/ambari.repo -O /etc/yum.repos.d/ambari.repo 
-- yum repolist
-
-
 ### 使用local repo
-- 將url 更改成192.168.32.106
+- 將url 更改成192.168.31.1
 - https://docs.hortonworks.com/HDPDocuments/Ambari-2.2.1.0/bk_Installing_HDP_AMB/content/_hdp_23_repositories.html
 
 
