@@ -1,4 +1,4 @@
-ï»¿# Big Dataä¹‹è™•ç†èˆ‡åˆ†æå¯¦å‹™ç­
+# Big Data¤§³B²z»P¤ÀªR¹ê°È¯Z
 ==========================
 
 ## Slides
@@ -7,21 +7,21 @@
 - https://www.slideshare.net/secret/zkzZx4ZMLAX4WF
 - https://www.slideshare.net/secret/dfD0p9YJG3SfOP
 
-## Centos 6.6 æª”æ¡ˆä¸‹è¼‰
+## Centos 6.6 ÀÉ®×¤U¸ü
 
 - https://drive.google.com/a/largitdata.com/file/d/0BwcmldsH2om-T3dQS2V3QklmNHM/view?usp=sharing
 
 
-## å®‰è£æ­¥é©Ÿå½±ç‰‡
+## ¦w¸Ë¨BÆJ¼v¤ù
 ---------------------------------------
 
-### CentOS å®‰è£
+### CentOS ¦w¸Ë
 - https://www.youtube.com/watch?v=RkC16DNcYGI&feature=youtu.be
 
-### Ambari Server å®‰è£æ­¥é©Ÿ
+### Ambari Server ¦w¸Ë¨BÆJ
 - https://youtu.be/lFBIY_687xY
 
-## å®‰è£æ­¥é©Ÿæ–‡å­—
+## ¦w¸Ë¨BÆJ¤å¦r
 
 ### prepare machine
 - su - 
@@ -41,14 +41,14 @@
 
 ### Java Download
 - http://www.oracle.com/technetwork/java/javase/downloads/java-archive-downloads-javase7-521261.html#jdk-7u79-oth-JPR
-- (é¸é …) https://mirror.its.sfu.ca/mirror/CentOS-Third-Party/NSG/common/x86_64/
-- (é¸é …) http://192.168.32.100/jdk-7u79-linux-x64.rpm
-- rpm â€“ivh jdk-7u79-linux-x64.rpm
+- (¿ï¶µ) https://mirror.its.sfu.ca/mirror/CentOS-Third-Party/NSG/common/x86_64/
+- (¿ï¶µ) http://192.168.32.100/jdk-7u79-linux-x64.rpm
+- rpm ¡Vivh jdk-7u79-linux-x64.rpm
 
-### æ–¼å®‰è£ä¸»æ©Ÿä¸Šå»ºç«‹è»Ÿé€£çµ
+### ©ó¦w¸Ë¥D¾÷¤W«Ø¥ß³n³sµ²
 - ln -s /usr/java/jdk1.7.0_79 /usr/java/java
 
-### æ–¼å®‰è£ä¸»æ©Ÿè¨­å®šç’°å¢ƒè®Šæ•¸
+### ©ó¦w¸Ë¥D¾÷³]©wÀô¹ÒÅÜ¼Æ
 - vi /etc/profile 
 
 ```
@@ -58,66 +58,67 @@ export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar:$JRE_HOME/lib/
 export PATH=$PATH:$JAVA_HOME/bin
 ```
 
-### ç«‹å³æ›´æ–°
+### ¥ß§Y§ó·s
 - source /etc/profile
 
-### æª¢æŸ¥ Java ç‰ˆæœ¬
+### ÀË¬d Java ª©¥»
 - java -version
 
 
-### æ–¼å®‰è£ä¸»æ©Ÿé—œé–‰é˜²ç«ç‰†
+### ©ó¦w¸Ë¥D¾÷Ãö³¬¨¾¤õÀğ
 - chkconfig iptables off
 - service iptables stop
 
-### æ–¼å®‰è£ä¸»æ©Ÿè¨­å®šSELlinux
-- vi /etc/selinux/config å°‡ SELINUX=disabled
+### ©ó¦w¸Ë¥D¾÷³]©wSELlinux
+- vi /etc/selinux/config ±N SELINUX=disabled
 - setenforce 0
 
-### HDPå»ºè­°é—œé–‰ Transparent Huge Pagesï¼Œæ–¼å®‰è£ä¸»æ©Ÿä¸ŠåŸ·è¡Œ
+### HDP«ØÄ³Ãö³¬ Transparent Huge Pages¡A©ó¦w¸Ë¥D¾÷¤W°õ¦æ
 - echo never > /sys/kernel/mm/redhat_transparent_hugepage/enabled
 - echo never > /sys/kernel/mm/redhat_transparent_hugepage/defrag
 
-### ç¢ºå®šç™»å…¥å¸³è™Ÿç‚º root åœ¨ master ä¸ŠåŸ·è¡Œ (éœ€è¦ç¶²è·¯ç’°å¢ƒå¥½çš„ç’°å¢ƒä¸‹)
+### ½T©wµn¤J±b¸¹¬° root ¦b master ¤W°õ¦æ (»İ­nºô¸ôÀô¹Ò¦nªºÀô¹Ò¤U)
 - cd /tmp
 - wget -nv http://public-repo-1.hortonworks.com/ambari/centos6/2.x/updates/2.2.0.0/ambari.repo -O /etc/yum.repos.d/ambari.repo 
 - yum repolist
-- (é¸é …) yum install ambari-server
-- (å»ºè­°é¸é …) wget http://192.168.32.100/ambari-server-2.2.0.0-1310.x86_64.rpm
-- (å»ºè­°é¸é …) yum localinstall ambari-server-2.2.0.0-1310.x86_64.rpm
+- (¿ï¶µ) yum install ambari-server
+- («ØÄ³¿ï¶µ) wget http://192.168.136.1/ambari-server-2.2.0.0-1310.x86_64.rpm
+- («ØÄ³¿ï¶µ) wget http://192.168.31.1/ambari-server-2.2.0.0-1310.x86_64.rpm
+- («ØÄ³¿ï¶µ) yum localinstall ambari-server-2.2.0.0-1310.x86_64.rpm
 
-### è¨­å®š Ambari
+### ³]©w Ambari
 - ambari-server setup
 
-### å®‰è£ Ambari
+### ¦w¸Ë Ambari
 - ambari-server start
 
-### é€£ç·šè‡³Server
+### ³s½u¦ÜServer
 - 192.168.81.128:8080
 
 ### private key
 - cat ~/.ssh/id_rsa
 
 
-### è¨­å®šRepo
+### ³]©wRepo
 - cd /tmp
 - wget -nv http://public-repo-1.hortonworks.com/ambari/centos6/2.x/updates/2.2.0.0/ambari.repo -O /etc/yum.repos.d/ambari.repo 
 - yum repolist
 
 
-### ä½¿ç”¨local repo
-- å°‡url æ›´æ”¹æˆ192.168.32.106
+### ¨Ï¥Îlocal repo
+- ±Nurl §ó§ï¦¨192.168.32.106
 - https://docs.hortonworks.com/HDPDocuments/Ambari-2.2.1.0/bk_Installing_HDP_AMB/content/_hdp_23_repositories.html
 
 
-### ä¿®æ”¹ replication
-- HDFSã€€-> block replication -> 1
+### ­×§ï replication
+- HDFS¡@-> block replication -> 1
 
-## å»ºè­°è¨­å®š
+## «ØÄ³³]©w
 - wget http://public-repo-1.hortonworks.com/HDP/tools/2.3.0.0/hdp_manual_install_rpm_helper_files-2.3.0.0.2557.tar.gz
 - tar zxvf hdp_manual_install_rpm_helper_files-2.3.0.0.2557.tar.gz
 
 
-## ä½¿ç”¨Hive View
+## ¨Ï¥ÎHive View
 - Services > HDFS > Configs.
 
 - Custom core-site -> Click Add Property:
@@ -130,7 +131,7 @@ hadoop.proxyuser.root.hosts=*
 - su - hdfs
 - hadoop dfsadmin -safemode leave
 
-##è¨­å®šæ¬Šé™
+##³]©wÅv­­
 - su - hdfs
 - hadoop fs -mkdir /user/admin
 - hadoop fs -chown admin:hadoop /user/admin
@@ -144,19 +145,19 @@ hadoop.proxyuser.root.hosts=*
 
 ## setup hue
 
-- hadoop.proxyuser.hue.hosts * ï°
-- hadoop.proxyuser.hue.groups * ï°
-- hadoop.proxyuser.hcat.groups * ï°
-- hadoop.proxyuser.hcat.hosts * ï°
-- hadoop.proxyuser.root.groups * ï°
-- hadoop.proxyuser.root.hosts * ï°
-- hadoop.proxyuser.ambariusr.groups * ï°
-- hadoop.proxyuser.ambariusr.hosts * ï® 
-- ç¢ºå®š hdfs-site.xml çš„ webhdfs æ˜¯ enabled 
-- oozie.service.ProxyUserService.proxyuser.hue.hosts * ï°
+- hadoop.proxyuser.hue.hosts * p
+- hadoop.proxyuser.hue.groups * p
+- hadoop.proxyuser.hcat.groups * p
+- hadoop.proxyuser.hcat.hosts * p
+- hadoop.proxyuser.root.groups * p
+- hadoop.proxyuser.root.hosts * p
+- hadoop.proxyuser.ambariusr.groups * p
+- hadoop.proxyuser.ambariusr.hosts * n 
+- ½T©w hdfs-site.xml ªº webhdfs ¬O enabled 
+- oozie.service.ProxyUserService.proxyuser.hue.hosts * p
 - oozie.service.ProxyUserService.proxyuser.hue.groups *
-- webhcat.proxyuser.hue.hosts æ˜¯* ï°
-- webhcat.proxyuser.hue.groups æ˜¯*
+- webhcat.proxyuser.hue.hosts ¬O* p
+- webhcat.proxyuser.hue.groups ¬O*
 
 
 ## setup ini 
